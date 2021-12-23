@@ -1,5 +1,11 @@
+using System;
 using Microsoft.Extensions.Logging;
-static void Main(string[] args)
+
+namespace С_
+{
+    class Program
+    {
+        static void Main(string[] args)
     {
 
         var loggerFactory = LoggerFactory.Create(builder =>
@@ -7,7 +13,7 @@ static void Main(string[] args)
            builder
                 .AddFilter("Microsoft", Microsoft.Extensions.Logging.LogLevel.Warning)
                 .AddFilter("System", Microsoft.Extensions.Logging.LogLevel.Warning)
-                .AddConsole()
+                builder.AddConsole()
                 .AddEventLog()
                 .AddDebug();
        });
@@ -16,3 +22,5 @@ static void Main(string[] args)
         logger.LogError(2, "The Example LogError ({0}).", DateTime.UtcNow);
         logger.LogWarning(3, "The Example Warning ({0}).", DateTime.UtcNow);
     }
+    }
+}
